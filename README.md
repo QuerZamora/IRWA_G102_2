@@ -1,5 +1,5 @@
-# Universitat Pompeu Fabra de barcelona 
-# RIAW Subject 2024/2025 
+## Information Retrieval and Web Analysis Subject 2024/2025 
+### Lab Project - UPF
 
 
 ### Group G102-2: Roger Sola and Queralt Zamora
