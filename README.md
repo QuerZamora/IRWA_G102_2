@@ -1,9 +1,8 @@
 Universitat Pompeu Fabra de barcelona - 
-RIAW Subject 2024/2025 - 
-group G102-2 
+RIAW Subject 2024/2025 
 
 
-Roger Sola and Queralt Zamora
+Group G102-2: Roger Sola and Queralt Zamora
 
 
 
