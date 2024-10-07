@@ -1,5 +1,5 @@
-## Information Retrieval and Web Analysis Subject 2024/2025 
-### Lab Project - Universitat Pompeu Fabra de Barcelona
+## G102-2 LAB PROJECT - IRWA Subject 2024/2025 
+#### Universitat Pompeu Fabra de Barcelona
 
 #### Group G102-2: Roger Sola and Queralt Zamora
 
