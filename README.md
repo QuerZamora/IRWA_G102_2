@@ -1,6 +1,5 @@
-## G102-2 Project - IRWA Subject 2024/2025 - UPF
+## Group G102_2 Project - IRWA Subject 2024/2025 - UPF
 
-#### Group G102-2
 #### Roger Sola (u199780) & Queralt Zamora (u199903)
 
 
