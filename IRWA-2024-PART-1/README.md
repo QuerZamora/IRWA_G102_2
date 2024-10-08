@@ -1,4 +1,4 @@
-## PART 1 - Project - RIAW
+## PART 1 - Project - IRWA
 ### GROUP 102_2: Roger Sola and Queralt Zamora
 
 
