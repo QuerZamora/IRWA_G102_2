@@ -2,5 +2,5 @@
 ### GROUP 102_2: Roger Sola and Queralt Zamora
 
 
-This readme file detailes the execution of the Part 1 delivered.
+This readme file detailes the execution of the delivered Part 1.
 
