@@ -7,5 +7,10 @@ This is the repository where you can find all the files refered to the different
 Each part is classified in a file IRWA-2024-PART-X, and it contains a report, the delivered code and a readme.md file.
 
 
-### PART 1
+### IRWA-2024-PART-1
 Delivered on 20/10/2024 (Deadline 21/10/2024)
+
+Contains:
+- Readme.md file
+- IRWA-2024-u199780-u199903-u199906-part-1.pdf report
+- IRWA-2024-part-1.ipynb notebook
