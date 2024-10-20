@@ -15,4 +15,4 @@ Once tha paths have been changed, the notebook is ready for execution. While cli
 
 <img width="437" alt="Captura de Pantalla 2024-10-20 a las 18 12 28" src="https://github.com/user-attachments/assets/8f6c4ed9-7f96-4092-ac95-64faf588f61f">
 
-And untill here, this is the end of the execution instructions for part 1. In this repository folder it can be found the report and the notebook **IRWA-2024-part-1.ipynb**
+And untill here, this is the end of the execution instructions for part 1. In this repository folder it can be found the report **IRWA-2024-u199780-u199903-u199906-part-1** and the notebook **IRWA-2024-part-1.ipynb**
