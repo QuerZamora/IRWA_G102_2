@@ -14,3 +14,11 @@ Contains:
 - Readme.md file
 - IRWA-2024-u199780-u199903-u199906-part-1.pdf report
 - IRWA-2024-part-1.ipynb notebook
+
+### IRWA-2024-PART-2
+Delivered on 28/10/2024 (Deadline 29/10/2024)
+
+Contains:
+- Readme.md file
+- IRWA-2024-u199780-u199903-u199906-part-2.pdf report
+- IRWA-2024-part-2.ipynb notebook
