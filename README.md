@@ -24,7 +24,7 @@ Contains:
 - IRWA-2024-part-2.ipynb notebook
 
 ### IRWA-2024-PART-3
-Delivered on 14/11/2024 (Deadline 14/11/2024)
+Delivered on 13/11/2024 (Deadline 14/11/2024)
 
 Contains:
 - Readme.md file
