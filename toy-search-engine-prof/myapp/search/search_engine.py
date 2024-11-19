@@ -1,6 +1,7 @@
 import random
 
 from myapp.search.objects import ResultItem, Document
+from myapp.search.algorithms import search_in_corpus
 
 
 def build_demo_results(corpus: dict, search_id,search_query):
@@ -36,9 +37,23 @@ class SearchEngine:
 
         results = []
         ##### your code here #####
-        results = build_demo_results(corpus, search_id,search_query)  # replace with call to search algorithm
+        #results = build_demo_results(corpus, search_id,search_query)  # replace with call to search algorithm
 
-        # results = search_in_corpus(search_query)
+        results2 = search_in_corpus(search_query, corpus)
         ##### your code here #####
-
+        for score, doc_id in results2:
+            document = corpus[doc_id]
+            results.append(ResultItem(
+                id=doc_id,
+                title=document.title,
+                tweet=document.tweet,
+                username=document.username,
+                date=document.date,
+                likes=document.likes,
+                retweets=document.retweets,
+                url=document.url,
+                search_id=search_id,
+                ranking=score
+            ))
+            
         return results
