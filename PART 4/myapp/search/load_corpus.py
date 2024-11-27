@@ -1,63 +1,38 @@
-'''
-
-import pandas as pd
-import json
-from myapp.search.objects import Document
-from pandas import json_normalize
-
-_corpus = {}
-
-def load_corpus(path) -> [Document]:
-    #read all lines
-    with open(path,encoding='utf-8') as fp:
-        lines = fp.readlines()
-
-    json_string = ''.join(lines)
-    # Parse the string into a JSON object
-    json_data = json.loads(json_string)
-    df = json_normalize(json_data['Tweet'])
-    df['id'] = df.index.values
-    df.apply(_row_to_doc_dict, axis=1)
-
-    return _corpus
-
-
-def _row_to_doc_dict(row: pd.Series):
-    _corpus[row['Id']] = Document(row['Id'], row['Tweet'][0:100], row['Tweet'], row['Date'], row['Likes'], row['Retweets'],row['Url'], row['Hashtags'])
-
-'''
-################
-
+###############
 import pandas as pd
 import datetime
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 import re
-
 from myapp.core.utils import load_json_file
 from myapp.search.objects import Document
 
 _corpus = {}
+_stemmer = PorterStemmer()
+_stop_words = set(stopwords.words("english"))
+
 
 def clean(text):
-  # Transform to lowercase
-  cleanTxt = text.lower()
+    # Convert text to lowercase
+    text = text.lower()
+    # Remove newline characters
+    text = text.replace('\\n', '')
+    # Remove extra whitespaces
+    text = ' '.join(text.split())
+    # Delete URLs on the tweet because we won't be able to access to them
+    text = re.sub(r'\S*https?:\S*', '', text)
+    # Remove spaces at first and at the end of a message
+    text = text.strip()
+    # Remove punctuation
+    text = re.sub(r'[^a-z0-9 ]+', '', text)
+    # Tokenize the text
+    words = text.split()
+    # Remove stopwords and apply stemming
+    processed_words = [_stemmer.stem(word) for word in words if word not in _stop_words]
+    return ' '.join(processed_words)
 
-  # Removing the urls from tweets, starts with https
-  cleanTxt = re.sub('https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
-  # Removing the entire hashtags, starts with '#'
-  cleanTxt = re.sub(r'#\w+\s*', '', cleanTxt)
-
-  # Removing nonalphanumeric
-  cleanTxt = re.sub(r'[\W]+', ' ', cleanTxt)
-  cleanTxt = re.sub(r'[\_]+', '', cleanTxt)
-
-  return cleanTxt
 
 def build_terms(text):
-  stemmer = PorterStemmer()
-  stop_words = set(stopwords.words("english"))
-
   # Clean text
   text = clean(text)
 
@@ -65,23 +40,18 @@ def build_terms(text):
   text = text.split()
 
   # Eliminate the stopwords (HINT: use List Comprehension)
-  text = [word for word in text if word not in stop_words]
+  text = [word for word in text if word not in _stop_words]
 
   # Perform stemming (HINT: use List Comprehension)
-  text = [stemmer.stem(word) for word in text]
+  text = [_stemmer.stem(word) for word in text]
 
   return text
 
 def separate_by_words(input_string):
     words = re.findall(r'[A-Z][a-z]*', input_string)
-
-    # If there is only one or none words
-    if (words == None or len(words) == 0):
-      return input_string
-
-    # If there are 2 or more identified words
-    else:
-      return ' '.join(words)
+    if not words:
+        return input_string
+    return ' '.join(words).lower()
 
 
 def getHashtagsFromTweet(row):
@@ -99,13 +69,11 @@ def getHashtagsFromTweet(row):
     return [tag[1:] for tag in hashtags]  # Remove the '#' for consistency
 
 
-def prepare_hashtag_for_text(list_processed_hasthags):
-  # Join the hashtags into a single string and convert to lowercase
-  all_hashtags_text = ' '.join(list_processed_hasthags).lower()
+def prepare_hashtag_for_text(list_processed_hashtags):
+    if not list_processed_hashtags:
+        return []
+    return ' '.join(list_processed_hashtags).lower().split()
 
-  # Split the text into individual words
-  words = all_hashtags_text.split()
-  return words
 
 def load_corpus(path) -> [Document]:
     """

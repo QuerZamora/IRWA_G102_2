@@ -3,17 +3,35 @@ import random
 from datetime import datetime
 
 
+import json
+import random
+from datetime import datetime
+
 class AnalyticsData:
     """
-    An in memory persistence object.
-    Declare more variables to hold analytics tables.
+    An in-memory persistence object to track and store analytics data.
     """
-    # fact_clicks is a dictionary with the click counters: key = doc id | value = click counter
-    fact_clicks = dict([])
+
+    def __init__(self):
+        # Ahora fact_clicks será una variable de instancia
+        self.fact_clicks = dict([])
 
     def save_query_terms(self, terms: str) -> int:
+        """
+        Save the search query terms, returning a random search_id.
+        """
         print(self)
         return random.randint(0, 100000)
+
+    def increment_click(self, doc_id: str):
+        """
+        Increment the click count for a specific document ID.
+        """
+        if doc_id in self.fact_clicks:
+            self.fact_clicks[doc_id] += 1
+        else:
+            self.fact_clicks[doc_id] = 1
+        print(f"Incremented click count for doc_id {doc_id}. New count: {self.fact_clicks[doc_id]}")
 
 
 
