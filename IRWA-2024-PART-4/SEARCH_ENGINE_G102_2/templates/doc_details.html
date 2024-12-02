@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Detail - IRWA Search Engine</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eef2f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            max-width: 700px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* Header and Back Links */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .back-links {
+            margin-bottom: 10px;
+        }
+
+        .back-links a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        .back-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tweet Details */
+        .tweet-container {
+            text-align: center;
+        }
+
+        .tweet-author a {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1da1f2;
+            text-decoration: none;
+        }
+
+        .tweet-author a:hover {
+            text-decoration: underline;
+        }
+
+        .tweet-content {
+            font-size: 16px;
+            color: #333333;
+            margin: 15px 0;
+        }
+
+        .tweet-date {
+            font-size: 14px;
+            color: #8e8e8e;
+        }
+
+        .tweet-stats {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            gap: 15px;
+        }
+
+        .tweet-stats span {
+            font-size: 16px;
+            color: #555555;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* URL and Similarity */
+        .tweet-extra {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .tweet-extra strong {
+            color: #555555;
+            font-size: 14px;
+        }
+
+        .tweet-extra a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .tweet-extra a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer and Buttons */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="back-links">
+                <a href="#" onclick="history.go(-2)">Go Back 2 Pages</a>
+            </div>
+            <h2>X (Twitter)</h2>
+        </div>
+
+        <!-- Tweet Details -->
+        <div class="tweet-container">
+            <p class="tweet-author">
+                <a href="https://twitter.com/{{ document.username }}">{{ document.username }}</a>
+            </p>
+            <p class="tweet-content">{{ document.tweet }}</p>
+            <p class="tweet-date">{{ document.date }}</p>
+
+            <div class="tweet-stats">
+                <span>🔁 {{ document.retweets }}</span>
+                <span>❤️ {{ document.likes }}</span>
+            </div>
+        </div>
+
+        <!-- URL and Similarity -->
+        <div class="tweet-extra">
+            <p><strong>URL:</strong> <a href="{{ document.url }}">{{ document.url }}</a></p>
+            <p><strong>Similarity with your search:</strong> {{ document.ranking }}</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <a href="/stats?search_id=document.search_id">View Stats</a>
+            <a href="/dashboard">Go to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
